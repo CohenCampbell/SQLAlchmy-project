@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>User Details</title>
+    <link rel="stylesheet" href="/static/detail.css">
+</head>
+<body>
+    <img src="{{user.image_url}}" width="50" height="50">
+    <h1>{{user.first_name}} {{user.last_name}}</h1>
+    <a href="/edit{{user.id}}"><button>Edit</button></a>
+    <a href="/delete/{{user.id}}"><button>Delete</button></a>
+    <a href="/users"><button>Back</button></a>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit a User</title>
+    <link rel="stylesheet" href="/static/edit.css">
+</head>
+<body>
+    <form action="/" method="post">
+        <h5>First Name</h5>
+        <input class="hidden" name="edit" value="{{True}}">
+        <input class="hidden" name="userData" value="{{user.id}}">
+
+        <input type="text" name="first" value="{{user.first_name}}">
+
+        <h5>Last Name</h5>
+        <input type="text" name="last" value="{{user.last_name}}">
+
+        <h5>Image URL</h5>
+        <input type="text" name="url" value="{{user.image_url}}">
+
+        <button type="submit">edit</button>
+    </form>
+    <a href="/"><button>Back</button></a>
+</body>
+</html>
