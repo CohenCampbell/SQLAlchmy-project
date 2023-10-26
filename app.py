@@ -1,6 +1,6 @@
 """Blogly application."""
 from flask import Flask, render_template, redirect, request
-from models import db, connect_db, User
+from models import db, connect_db, User, Post
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly'
@@ -56,7 +56,8 @@ def create():
 @app.route("/detail/<int:id>")
 def details(id):
     user = User.query.get(id)
-    return render_template("detail.html", user=user)
+    posts = Post.query.filter_by(user_id=id).all()
+    return render_template("detail.html",posts=posts, user=user)
 
 @app.route("/delete/<int:id>")
 def delete(id):
@@ -67,3 +68,49 @@ def delete(id):
 def edit(id):
     user = User.query.get(id)
     return render_template("edit.html", user=user)
+
+@app.route("/post/<int:id>/new")
+def new_posts(id):
+    user = User.get_by_id(id)
+    return render_template("create_post.html", user=user)
+
+@app.route("/post/add", methods=["POST", "GET"])
+def create_posts():
+
+    id = request.form["id"]
+    title = request.form["title"]
+    content = request.form["content"]
+
+    new_post = Post(title=title, content=content, user_id=id)
+    db.session.add(new_post)
+    db.session.commit()
+    return redirect(f"/detail/{id}")
+
+@app.route("/delete/post/<int:id>")
+def delete_post(id):
+    post = Post.query.get(id)
+    uId = post.user_id
+    Post.delete_post_byid(id)
+    return redirect(f"/detail/{uId}")
+
+@app.route("/post/detail/<int:id>")
+def post_detail(id):
+    post = Post.query.get(id)
+    user = User.query.get(post.user_id)
+    return render_template("post_detail.html", post=post, user=user)
+
+@app.route("/post/edit/<int:id>")
+def edit_post(id):
+    post = Post.query.get(id)
+    return render_template("edit_post.html", post=post)
+
+@app.route("/edit/post/<int:id>", methods=["POST"])
+def post_editor(id):
+
+    title = request.form["title"]
+    content = request.form["content"]
+    post = Post.query.get(id)
+    post.title = title
+    post.content = content
+    db.session.commit()
+    return redirect(f"/post/detail/{id}")

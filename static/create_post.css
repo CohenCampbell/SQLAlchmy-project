@@ -1,0 +1,38 @@
+#div1{
+display: block;
+}
+#div2{
+display: block;
+margin-top: 10px;
+}
+p{
+    display: inline;
+}
+#p1{
+margin-right: 26px;
+}
+#p2{
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+#input1{
+    border-radius: 3px;
+    width: 250px;
+}
+#input2{
+    border-radius: 3px;
+    width: 250px;
+    height: 55px;
+    box-sizing: border-box;
+    resize: none;
+}
+#add1{
+    margin-left: 160px;
+}
+#back1{
+    margin-top: 10px;
+    margin-left: 63px;
+}
+.none{
+    display: none;
+}

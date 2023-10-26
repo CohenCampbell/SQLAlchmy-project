@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-
+import datetime
 db = SQLAlchemy()
 
 def connect_db(app):
@@ -42,3 +42,35 @@ class User(db.Model):
                           default='https://braverplayers.org/wp-content/uploads/2022/09/blank-pfp.png',
                           nullable=False
                           )
+    
+    post = db.relationship("Post")
+
+class Post(db.Model):
+    __tablename__ = "posts"
+
+    @classmethod
+    def delete_post_byid(cls, id):
+        user_del = cls.query.get(id)
+        db.session.delete(user_del)
+        db.session.commit()
+        return
+
+    id = db.Column(db.Integer,
+               primary_key=True,
+               autoincrement=True
+               )
+    
+    title = db.Column(db.Text,
+                      nullable=False)
+    
+    content = db.Column(db.Text,
+                        nullable=False)
+    
+    created_at = db.Column(db.DateTime,
+                           nullable=False,
+                           default=datetime.datetime.now)
+    
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+    user = db.relationship('User')
+                           

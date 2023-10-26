@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Post</title>
+</head>
+<body>
+    <h1>Edit Post</h1>
+    <form action="/edit/post/{{post.id}}" method="post">
+    <div><p>Title:</p> <input name="title" value="{{post.title}}" type="text"></div>
+    <div><p>Content:</p> <input  type="text" value="{{post.content}}" size="35" name="content"></input></div>
+    <a href="/post/detail/{{post.id}}"><button type="button">Back</button></a>
+    <button type="submit">Edit</button>
+    </form>
+</body>
+</html>

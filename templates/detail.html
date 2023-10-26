@@ -5,10 +5,23 @@
     <link rel="stylesheet" href="/static/detail.css">
 </head>
 <body>
-    <img src="{{user.image_url}}" width="50" height="50">
+    <img src="{{user.image_url}}" width="150" height="150">
     <h1>{{user.first_name}} {{user.last_name}}</h1>
+    <div class="buttonGroup1">
     <a href="/edit{{user.id}}"><button>Edit</button></a>
     <a href="/delete/{{user.id}}"><button>Delete</button></a>
     <a href="/users"><button>Back</button></a>
+    </div>
+    <hr>
+    <h1 id="postsH1">Posts</h1>
+    <div class="buttonGroup2"><a href="/post/{{user.id}}/new"><button>Add Post</button></a></div>
+        <ul>
+            {%for post in posts%}
+            <div id="div100">
+            <li><a href="/post/detail/{{post.id}}">{{post.title}}</a></li>
+            </div>
+            {%endfor%}
+        </ul>
+    
 </body>
 </html>

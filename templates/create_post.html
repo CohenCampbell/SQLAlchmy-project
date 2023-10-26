@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/create_post.css">
+    <title>Create Post</title>
+</head>
+<body>
+    <h1>Add Post for {{user.first_name}} {{user.last_name}}</h1>
+    <form action="/post/add" method="post">
+        <input name="id" class="none" value="{{user.id}}">
+    <div id="div1"><p id="p1">Title:</p> <input name="title" id="input1" type="text"></div>
+    <div id="div2"><p id="p2">Content:</p> <textarea id="input2" type="text" name="content"></textarea></div>
+    <a href="/detail/{{user.id}}"><button type="button" id="back1">Back</button></a>
+    <button id="add1" type="submit">Add</button>
+    </form>
+</body>
+</html>
