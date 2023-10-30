@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{tag.name}} tag details</title>
+</head>
+<body>
+    <h1>{{tag.name}}</h1>
+    <a href="javascript:history.back()"><button>Back</button></a>
+    <a href="/tag/edit/{{tag.id}}"><button>Edit</button></a>
+    <a href="/tag/delete/{{tag.id}}"><button>Delete</button></a>
+    <ul>
+        {%for post in posts%}
+        <a href="/post/detail/{{post.id}}"><li>{{post.title}}</li></a>
+        {%endfor%}
+    </ul>
+</body>
+</html>

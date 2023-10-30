@@ -10,6 +10,13 @@
         <input name="id" class="none" value="{{user.id}}">
     <div id="div1"><p id="p1">Title:</p> <input name="title" id="input1" type="text"></div>
     <div id="div2"><p id="p2">Content:</p> <textarea id="input2" type="text" name="content"></textarea></div>
+    <hr>
+    <h2>Tags</h2>
+    <ul id="ul123">
+        {%for tag in tags%}
+         <li><input value="{{tag.id}}" name="tag_checkboxes" type="checkbox">{{tag.name}}</li>
+        {%endfor%}
+    </ul>
     <a href="/detail/{{user.id}}"><button type="button" id="back1">Back</button></a>
     <button id="add1" type="submit">Add</button>
     </form>

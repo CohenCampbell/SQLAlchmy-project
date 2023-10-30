@@ -12,5 +12,14 @@
         {%endfor%}
     </ul>
     <a href="/create"><button>Add user</button></a>
+    <hr>
+    <h1>Tags</h1>
+    <ul>
+        {%for tag in tags%}
+        <a href="/tag/detail/{{tag.id}}"><li>{{tag.name}}</li></a>
+        {%endfor%}
+    </ul>
+    <a href="/tag/create"><button>Add tag</button></a>
+   
 </body>
 </html>

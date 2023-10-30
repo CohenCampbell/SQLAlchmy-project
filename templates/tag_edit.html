@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <form action="/tag/edit/post/{{tag.id}}" method="post">
+        <h5>Tag Name</h5>
+        <input value="{{tag.name}}" name="tagname" type="text">
+        <a href="/users"><button type="submit">Edit</button></a>
+    </form>
+    <a href="/users"><button type="button">Back</button></a>
+</body>
+</html>
